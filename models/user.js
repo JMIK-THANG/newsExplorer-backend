@@ -9,9 +9,9 @@ const userSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 30,
   },
- 
+
   email: {
-    type: "String",
+    type: String,
     required: [true, "You must enter a valid email "],
     unique: true,
     validate: {
@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     },
   },
   password: {
-    type: "String",
+    type: String,
     required: [true, "Please enter the correct password"],
     select: false,
   },
@@ -42,4 +42,5 @@ userSchema.statics.findUserByCredentials = function (email, password) {
       });
     });
 };
+
 module.exports = mongoose.model("user", userSchema);

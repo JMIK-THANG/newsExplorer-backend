@@ -19,8 +19,7 @@ mongoose
   .catch(console.error);
 app.use(express.json());
 app.use(requestLogger);
-app.use('/api/auth',require('./routes/authRoutes'));
-// Crush testing
+
 app.get("/crash-test", () => {
   setTimeout(() => {
     throw new Error("Server will crash now");
