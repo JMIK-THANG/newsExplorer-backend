@@ -1,12 +1,12 @@
-const Article = require("../models/clothingItem");
+const Article = require("../models/article");
 const BadRequestError = require("../errors/badRequestError");
 const NotFoundError = require("../errors/notFoundError");
 const ForbiddenError = require("../errors/forbiddenError");
-const { CREATE, SUCCESS } = require("../errors");
+const { CREATED, SUCCESS } = require("../utils/errors");
 
 const getUserArticles = (req, res, next) => {
   Article.find({ owner: req.user._id })
-    .then((articles) =>res.status(SUCCESS).send(articles))
+    .then((articles) => res.status(CREATED).send(articles))
     .catch(next);
 };
 
@@ -14,7 +14,7 @@ const createArticle = (req, res, next) => {
   const { keyword, title, text, date, source, link, image } = req.body;
   const owner = req.user._id;
 
-  ClothingItem.create({
+  Article.create({
     keyword,
     title,
     text,
@@ -24,7 +24,7 @@ const createArticle = (req, res, next) => {
     image,
     owner,
   })
-    .then((article) => res.status(CREATE).send(article))
+    .then((article) => res.status(CREATED).send(article))
     .catch((err) => {
       if (err.name === "ValidationError") {
         return next(new BadRequestError("Invalid article data."));

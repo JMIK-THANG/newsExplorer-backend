@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { getUserArticles, createArticle, deleteArticle } = require("../controllers/articles");
-const auth = require("../middlewares/auth");
+const {auth} = require("../middlewares/auth");
 
 router.get("/", auth, getUserArticles);
 router.post("/", auth, createArticle);

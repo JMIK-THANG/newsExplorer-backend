@@ -9,7 +9,7 @@ const NotFoundError = require("../errors/notFoundError");
 const UnauthorizedError = require("../errors/unauthorizedError");
 const Conflict = require("../errors/conflictError");
 
-exports.signup = (req, res, next) => {
+const signup = (req, res, next) => {
   const { name, email, password } = req.body;
 
   if (!email || !password) {
@@ -55,7 +55,7 @@ const getCurrentUser = (req, res, next) => {
     });
 };
 
-exports.signin = (req, res, next) => {
+const signin = (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
     return next(new BadRequestError("Email or password required"));
@@ -75,4 +75,4 @@ exports.signin = (req, res, next) => {
     });
 };
 
-module.exports = { getCurrentUser };
+module.exports = { getCurrentUser, signin, signup };
