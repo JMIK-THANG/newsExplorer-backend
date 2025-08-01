@@ -8,6 +8,8 @@ It handles user authentication, secure API routes, and article management using 
 ## 🔗 Frontend Repository
 
 👉 [NewsExplorer Frontend (React)](https://github.com/JMIK-THANG/newsExplorer-react)
+👉 [Live App (GitHub Pages)](https://jmik-thang.github.io/newsExplorer-react/)  
+
 
 ---
 
