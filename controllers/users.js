@@ -11,9 +11,8 @@ const Conflict = require("../errors/conflictError");
 
 const signup = (req, res, next) => {
   const { name, email, password } = req.body;
-
   if (!email || !password) {
-    next(new BadRequestError("Email and Password are required."));
+    return next(new BadRequestError("Email and Password are required."));
   }
 
   return User.findOne({ email })
@@ -33,7 +32,7 @@ const signup = (req, res, next) => {
     )
     .catch((err) => {
       if (err.name === "ValidationError") {
-        next(new BadRequestError("Bad request: Invalid data sent"));
+        return next(new BadRequestError("Bad request: Invalid data sent"));
       }
 
       next(err);
