@@ -39,7 +39,7 @@ const validateSignup = celebrate({
     }),
     password: Joi.string().min(7).required().messages({
       "string.min": "The password must be at least 7 characters",
-      "string.empry": 'THe "password" field must be filled in',
+      "string.empty": 'THe "password" field must be filled in',
     }),
   }),
 });
