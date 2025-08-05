@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const articleSchema = new mongoose.Schema({
   keyword: {
-    type: "String",
+    type: String,
     required: true,
   },
   title: {
-    type: "String",
+    type: String,
     required: true,
   },
   text: {
