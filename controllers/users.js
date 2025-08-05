@@ -18,7 +18,7 @@ const signup = (req, res, next) => {
   return User.findOne({ email })
     .then((user) => {
       if (user) {
-        return next(new Conflict("User already exist."));
+        throw new Conflict("User already exist.");
       }
 
       return bcrypt.hash(password, 10);
@@ -30,12 +30,13 @@ const signup = (req, res, next) => {
         email: user.email,
       }),
     )
+
     .catch((err) => {
       if (err.name === "ValidationError") {
         return next(new BadRequestError("Bad request: Invalid data sent"));
       }
 
-      next(err);
+      return next(err);
     });
 };
 
