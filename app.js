@@ -8,15 +8,19 @@ const errorHandler = require("./middlewares/error-handler");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
 
 const app = express();
-const { PORT = 3005 } = process.env;
+const { PORT = 3005, CONNECTION, NODE_ENV } = process.env;
 
 app.use(cors());
-mongoose
-  .connect("mongodb://127.0.0.1:27017/newsexplorer_db")
-  .then(() => {
-    console.log("Connected to DB");
-  })
-  .catch(console.error);
+{
+  NODE_ENV == "production"
+    ? mongoose.connect(CONNECTION)
+    : mongoose
+        .connect("mongodb://127.0.0.1:27017/newsexplorer_db")
+        .then(() => {
+          console.log("Connected to DB");
+        })
+        .catch(console.error);
+}
 app.use(express.json());
 app.use(requestLogger);
 
