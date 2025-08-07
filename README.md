@@ -10,6 +10,9 @@ It handles user authentication, secure API routes, and article management using 
 👉 [NewsExplorer Frontend (React)](https://github.com/JMIK-THANG/newsExplorer-react)
 👉 [Live App (GitHub Pages)](https://jmik-thang.github.io/newsExplorer-react/)  
 
+## backend 
+-  http://35.231.209.119 // use external IP address, since this the backend and don't have the http://example.com ye.
+-  Please let me know it it's not correct. than you. 
 
 ---
 
