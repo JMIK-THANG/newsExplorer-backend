@@ -36,9 +36,9 @@ const createArticle = (req, res, next) => {
 const deleteArticle = (req, res, next) => {
   const { articleId } = req.params;
   const owner = req.user._id;
-
   Article.findById(articleId)
     .orFail()
+    .select("+owner")
     .then((article) => {
       if (String(article.owner) !== owner) {
         return next(

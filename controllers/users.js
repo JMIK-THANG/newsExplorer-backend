@@ -51,7 +51,7 @@ const getCurrentUser = (req, res, next) => {
       if (err.name === "CastError") {
         return next(new BadRequestError("Invalid user id."));
       }
-      return res.status(INTERNAL_SERVER_ERROR).send("Error in the server.");
+      return next(new INTERNAL_SERVER_ERROR("Error in the server."));
     });
 };
 
