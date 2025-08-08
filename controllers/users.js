@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
-const { SUCCESS, CREATED, INTERNAL_SERVER_ERROR } = require("../utils/errors");
+const { SUCCESS, CREATED } = require("../utils/errors");
 const { JWT_SECRET } = require("../utils/config");
 
 const BadRequestError = require("../errors/badRequestError");
@@ -28,7 +28,7 @@ const signup = (req, res, next) => {
       res.status(CREATED).send({
         name: user.name,
         email: user.email,
-      }),
+      })
     )
 
     .catch((err) => {
@@ -51,7 +51,7 @@ const getCurrentUser = (req, res, next) => {
       if (err.name === "CastError") {
         return next(new BadRequestError("Invalid user id."));
       }
-      return next(new INTERNAL_SERVER_ERROR("Error in the server."));
+      return next(err);
     });
 };
 
