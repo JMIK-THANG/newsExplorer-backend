@@ -2,18 +2,20 @@ const express = require("express");
 const { errors } = require("celebrate");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const helmet = require("helmet");
 require("dotenv").config();
 const mainRouter = require("./routes/index");
 const errorHandler = require("./middlewares/error-handler");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
+const { MONGO_URI, PORT } = require("./utils/config");
 
 const app = express();
-const { PORT = 3005, CONNECTION, NODE_ENV } = process.env;
 
+app.use(helmet());
 app.use(cors());
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/newsexplorer_db")
+  .connect(MONGO_URI)
   .then(() => {
     console.log("Connected to DB");
   })
