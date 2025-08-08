@@ -1,6 +1,3 @@
-// const { JWT_SECRET = "dev-secret", NODE_ENV } = process.env;
-// module.exports = { JWT_SECRET, NODE_ENV };
-
 const {
   NODE_ENV = "development",
   JWT_SECRET = "dev-secret",
