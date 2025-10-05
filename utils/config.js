@@ -8,9 +8,7 @@ const {
 const MONGO_URI =
   NODE_ENV === "production"
     ? CONNECTION
-    : "mongodb://127.0.0.1:27017/newsexplorer_db";
-
-console.log(process.env);
+    : "mongodb+srv://jmikthang5:jmik123@byterianwebsite.rpu76.mongodb.net/?retryWrites=true&w=majority&appName=byterianWebsite";
 
 module.exports = {
   PORT,
