@@ -2,7 +2,7 @@ const {
   NODE_ENV = "development",
   JWT_SECRET = "dev-secret",
   CONNECTION,
-  PORT = 3005,
+  PORT = 3001,
 } = process.env;
 
 const MONGO_URI =
