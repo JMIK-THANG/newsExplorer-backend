@@ -2,13 +2,13 @@ const {
   NODE_ENV = "development",
   JWT_SECRET = "dev-secret",
   CONNECTION,
-  PORT = 3004,
+  PORT = 3005,
 } = process.env;
 
 const MONGO_URI =
   NODE_ENV === "production"
     ? CONNECTION
-    : "mongodb+srv://jmikthang5:jmik123@byterianwebsite.rpu76.mongodb.net/?retryWrites=true&w=majority&appName=byterianWebsite";
+    : "mongodb+srv://jmikthang5:jmik12345@byterianwebsite.rpu76.mongodb.net/news-explorer_db";
 
 module.exports = {
   PORT,
